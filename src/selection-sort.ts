@@ -1,15 +1,15 @@
 export const selectionSort = (arr: number[]) => {
   const LENGTH = arr.length;
-  for (let i = 0; i < LENGTH; i++) {
-    let min = [i, arr[i]]; //[index,value]
+  for (let i = 0; i < LENGTH - 1; i++) {
+    let min = i; //[index,value]
     for (let j = i + 1; j < LENGTH; j++) {
-      if (arr[j] < min[1]) {
-        min = [j, arr[j]];
+      if (arr[j] < arr[min]) {
+        min = j;
       }
     }
     const temp = arr[i];
-    arr[i] = min[1];
-    arr[min[0]] = temp;
+    arr[i] = arr[min];
+    arr[min] = temp;
   }
   return arr;
 };
