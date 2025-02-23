@@ -5,7 +5,19 @@
  * @param arr arr to be sorted
  * @returns the original in-place sorted array
  */
-export const bubbleSort = function (arr: number[]): number[] {
+export const bubbleSort = (arr: number[]): number[] => {
+  const LENGTH = arr.length;
+  for (let i = 0; i < LENGTH; i++) {
+    for (let j = 1; j < LENGTH - i; j++) {
+      if (arr[j - 1] > arr[j]) {
+        [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
+      }
+    }
+  }
+
+  return arr;
+};
+/* export const bubbleSort = function (arr: number[]): number[] {
   const LENGTH = arr.length;
   for (let i = 0; i < LENGTH; i++) {
     for (let j = 1; j < LENGTH - i; j++) {
@@ -17,7 +29,7 @@ export const bubbleSort = function (arr: number[]): number[] {
     }
   }
   return arr;
-};
+}; */
 /* export const bubbleSort = (arr: number[]) => {
   const LENGTH = arr.length;
   for (let i = 0; i < LENGTH; i++) {
