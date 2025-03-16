@@ -17,6 +17,46 @@ export const mergeSort = (arr: number[], l: number, r: number) => {
 export const merge = (arr: number[], l: number, m: number, r: number) => {
   const left = arr.slice(l, m + 1);
   const right = arr.slice(m + 1, r + 1);
+  let li = 0,
+    ri = 0,
+    i = l;
+
+  while (li < left.length && ri < right.length) {
+    if (left[li] <= right[ri]) {
+      arr[i] = left[li];
+      li += 1;
+    } else {
+      arr[i] = right[ri];
+      ri += 1;
+    }
+    i += 1;
+  }
+
+  while (li < left.length) {
+    arr[i] = left[li];
+    li += 1;
+    i += 1;
+  }
+  while (ri < right.length) {
+    arr[i] = right[ri];
+    ri += 1;
+    i += 1;
+  }
+};
+/* export const mergeSort = (arr: number[], l: number, r: number) => {
+  if (arr.length === 0) return arr;
+  if (l === r) return arr;
+
+  const mid = Math.floor((l + r) / 2);
+  mergeSort(arr, l, mid);
+  mergeSort(arr, mid + 1, r);
+
+  merge(arr, l, mid, r);
+  return arr;
+};
+export const merge = (arr: number[], l: number, m: number, r: number) => {
+  const left = arr.slice(l, m + 1);
+  const right = arr.slice(m + 1, r + 1);
   let i = l,
     li = 0,
     ri = 0;
@@ -42,7 +82,7 @@ export const merge = (arr: number[], l: number, m: number, r: number) => {
     ri += 1;
     i += 1;
   }
-};
+}; */
 /* export const mergeSort = (arr: number[], l: number, r: number): number[] => {
   if (arr.length === 0) return arr;
   if (l === r) return arr;
